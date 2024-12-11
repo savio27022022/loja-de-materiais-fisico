@@ -1,6 +1,6 @@
 USE LojaDeMateriais;
 
------INSERT INTO--------- 
+-----Insert que relaciona produtos com categorias para retornar o valor total------
 INSERT INTO produto_categoria (produto_id, categoria_id)
 SELECT p.produto_id, c.categoria_id
 FROM produto p
