@@ -38,24 +38,24 @@ JOIN
 JOIN 
     fornecedor f ON p.fornecedor_id = f.fornecedor_id;
 
--- Function que retorna todos produtos disponíveis em uma categoria
+-- Function que retorna  o valor total de todos os produtos disponíveis em cada categoria,
+ou seja os 10 produtos X 5 categorias= 50 registros ou dados do valor total-----
 DELIMITER $$
 
-CREATE FUNCTION produtos_disponiveis_na_categoria(categoria_id INT)
+DELIMITER $$
+CREATE FUNCTION contar_combinacoes()
 RETURNS INT
 DETERMINISTIC
 BEGIN
-    DECLARE qtd_produtos INT;
-    SELECT COUNT(*)
-    INTO qtd_produtos
-    FROM produto
-    WHERE categoria_id = categoria_id
-    AND quantidade_disponivel > 0;
-    RETURN qtd_produtos;
+    DECLARE total INT;
+    
+    SELECT COUNT(*) INTO total
+    FROM produto p
+    CROSS JOIN categoria c;
+    
+    RETURN total;
 END $$
-
 DELIMITER ;
-
 
 -- Trigger para calcular o valor total de uma movimentação
 -- O valor total é calculado antes da inserção na tabela 'movimentacao'
