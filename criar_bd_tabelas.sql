@@ -45,14 +45,7 @@ CREATE TABLE IF NOT EXISTS produto (
     ON DELETE RESTRICT
     ON UPDATE CASCADE
 );
-----Criando Tabela Auxiliar--- 
-CREATE TABLE produto_categoria (
-    produto_id INT UNSIGNED NOT NULL,
-    categoria_id INT UNSIGNED NOT NULL,
-    PRIMARY KEY (produto_id, categoria_id),
-    FOREIGN KEY (produto_id) REFERENCES produto(produto_id),
-    FOREIGN KEY (categoria_id) REFERENCES categoria(categoria_id)
-);
+
 
 
 -- Criar tabela movimentacao
