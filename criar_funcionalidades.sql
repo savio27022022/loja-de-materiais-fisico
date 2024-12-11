@@ -37,6 +37,11 @@ JOIN
     categoria c ON p.categoria_id = c.categoria_id
 JOIN 
     fornecedor f ON p.fornecedor_id = f.fornecedor_id;
+--------          ------------
+CREATE VIEW vw_total_combinacoes AS
+SELECT COUNT(*) AS total_combinacoes
+FROM produto p
+CROSS JOIN categoria c;
 
 -- Function que retorna  o valor total de todos os produtos disponíveis em cada categoria,
 ou seja os 10 produtos X 5 categorias= 50 registros ou dados do valor total-----
